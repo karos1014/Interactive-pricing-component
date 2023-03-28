@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&display=swap');
+
+:root {
+    /* ## Colors */
+    /* ### Primary */
+
+    --Soft-Cyan: hsl(174, 77%, 80%); /*(Full Slider Bar)*/
+    --Strong-Cyan: hsl(174, 86%, 45%); /*(Slider Background)*/
+    --Light-Grayish-Red: hsl(14, 92%, 95%); /*(Discount Background)*/
+    --Light-Red: hsl(15, 100%, 70%); /*(Discount Text)*/
+    --Pale-Blue: hsl(226, 100%, 87%); /*(CTA Text)*/
+    /* ### Neutral */
+    --White: hsl(0, 0%, 100%); /*(Pricing Component Background)*/
+    --Very-Pale-Blue: hsl(230, 100%, 99%); /*(Main Background)*/
+    --Light-Grayish-Blue1: hsl(224, 65%, 95%); /*(Empty Slider Bar)*/
+    --Light-Grayish-Blue2: hsl(223, 50%, 87%); /*(Toggle Background)*/
+    --Grayish-Blue: hsl(225, 20%, 60%); /*(Text)*/
+    --Dark-Desaturated-Blue: hsl(227, 35%, 25%); /*(Text & CTA Background)*/
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+    list-style: none;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding-block: 80px 40px;
+    font-size: 15px;
+    background: linear-gradient(to bottom, var(--Light-Grayish-Blue1) 70%, var(--White) 50%);
+}
+
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+header img {
+    position: absolute;
+    top: -35px;
+    z-index: -1;
+}
+
+header h1 {
+    font-size: 28px;
+    color: var(--Dark-Desaturated-Blue);
+}
+
+header p {
+    color: var(--Grayish-Blue);
+}
+
+.pricing-component {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 600px;
+    background-color: var(--White);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 28px hsl(227, 35%, 25%, .1);
+}
+
+.pricing-component .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.pricing-component .header p {
+    color: var(--Grayish-Blue);
+}
+
+.pricing-component .header p:first-child {
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pricing-component .header p:last-child {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pricing-component .header p:last-child span {
+    font-size: 45px;
+    font-weight: 700;
+    color: var(--Dark-Desaturated-Blue);
+}
+
+.pricing-component .body {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.pricing-component .body .range {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 8px;
+    border-radius: 8px;
+    background-color: var(--Light-Grayish-Blue1);
+    user-select: none;
+}
+
+.pricing-component .body .range .slider {
+    position: absolute;
+    left: calc(50% - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--Strong-Cyan);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 22px hsl(174, 86%, 45%, .6);
+    transition: .2s;
+}
+
+.pricing-component .body .range .background {
+    width: calc(50% + 20px);
+    height: 100%;
+    background-color: var(--Soft-Cyan);
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.pricing-component .body .range .slider:hover {
+    background-color: hsla(174, 86%, 45%, .7);
+}
+
+.pricing-component .body .range .slider:active {
+    cursor: grabbing;
+    background-color: hsl(174, 56%, 45%);
+}
+
+.pricing-component .body .billing {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.pricing-component .body .billing p {
+    text-transform: capitalize;
+    color: var(--Grayish-Blue);
+}
+
+.pricing-component .body .billing .checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: var(--Light-Grayish-Blue2);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.pricing-component .body .billing .checkbox:hover {
+    background-color: hsla(174, 86%, 45%, .6);
+}
+
+.pricing-component .body .billing .checkbox.selected {
+    background-color: hsl(174, 56%, 45%);
+}
+
+.pricing-component .body .billing .checkbox .circle {
+    position: absolute;
+    left: 4px;
+    width: 17px;
+    height: 17px;
+    background-color: var(--White);
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.pricing-component .body .billing .checkbox .circle.selected {
+    left: 29px;
+}
+
+.pricing-component .body .billing .discount {
+    color: var(--Light-Red);
+    background-color: var(--Light-Grayish-Red);
+    padding: 3px 8px;
+    border-radius: 40px;
+    font-size: 11px;
+    margin-left: -10px;
+    user-select: none;
+}
+
+.pricing-component hr {
+    border: none;
+    height: 1px;
+    background-color: var(--Light-Grayish-Blue1);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 300px;
+}
+
+.pricing-component .footer {
+    padding-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pricing-component .footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pricing-component .footer ul li {
+    color: var(--Grayish-Blue);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.pricing-component .footer .submit-btn {
+    color: var(--White);
+    background-color: var(--Dark-Desaturated-Blue);
+    padding: 15px 50px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media (max-width: 630px) {
+    header h1 {
+        font-size: 20px;
+    }
+    header p {
+        width: 200px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .pricing-component {
+        width: 350px;
+        padding: 35px 20px;
+    }
+    .pricing-component .header {
+        justify-content: center;
+    }
+    .pricing-component .header p:last-child {
+        position: absolute;
+        top: 140px;
+    }
+    .pricing-component .header p:last-child span {
+        font-size: 30px;
+    }
+    .pricing-component .body .range {
+        margin-bottom: 60px;
+    }
+    .pricing-component .body .billing {
+        gap: 10px;
+    }
+    .pricing-component .body .billing p {
+        font-size: 12px;
+    }
+    .pricing-component .body .billing .checkbox {
+        width: 40px;
+        height: 22px;
+    }
+    .pricing-component .body .billing .checkbox .circle {
+        width: 16px;
+        height: 16px;
+        left: 3px;
+    }
+    .pricing-component .body .billing .checkbox .circle.selected {
+        left: 20px;
+    }
+    .pricing-component .body .billing .discount {
+        margin: 0;
+    }
+    .pricing-component .body .billing .discount span {
+        display: none;
+    }
+    .pricing-component .footer {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .pricing-component .footer ul {
+        align-items: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .pricing-component {
+        width: 100%;
+    }
+    .pricing-component .body .billing {
+        gap: 7px;
+        justify-content: center;
+    }
+    .pricing-component .body .billing p {
+        font-size: 10px;
+    }
+    .pricing-component .body .billing .checkbox {
+        width: 30px;
+        height: 17px;
+    }
+    .pricing-component .body .billing .checkbox .circle {
+        width: 13px;
+        height: 13px;
+    }
+    .pricing-component .body .billing .checkbox .circle.selected {
+        left: 14px;
+    }
+    .pricing-component .body .billing .discount {
+        font-size: 10px;
+    }
+}
